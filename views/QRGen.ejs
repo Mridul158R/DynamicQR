@@ -1,0 +1,34 @@
+<%- include("layout/header") %>
+  <main>
+    <div class="split left">
+      <div class="center">
+        <form action="/api/urlShortener" method="post">
+          <label for="Origin">Enter Target URL:</label>
+          <input id="Origin" type="url" name="OriginalUrl" value="<%=OriginalUrl %>" />
+          <div class="break"></div>
+          <label for="Shortner">Your Short URL:</label>
+          <input id="Shortner" type="url" name="ShortlUrl" value="<%=ShortUrl %>" readonly />
+          <div class="break2"></div>
+
+          <div class="toolbar">
+            <!-- This button will post the default method of the form -->
+            <button type="submit">Generate Short Url</button>
+
+            <!-- These buttons will post to the custom 
+  URL of the formaction attribute-->
+            <button type="submit" formaction="/QRCode">Generate QR Code</button>
+            <button type="submit" formaction="/Update">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="vl"></div>
+
+    <div class="split right">
+      <div class="center">
+        <h3>Dynamic QR Code</h3>
+        <img src=<%=qr_code %> alt="QR Code">
+      </div>
+    </div>
+  </main>
+  <%- include("layout/footer") %>
